@@ -1,0 +1,144 @@
+.navbar {
+  background: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  
+  .brand-highlight {
+    color: #2563eb;
+  }
+  
+  .brand-name {
+    color: #1e293b;
+  }
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.nav-link {
+  color: #475569;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  
+  &:hover, &.active {
+    color: #2563eb;
+  }
+  border-bottom: 3px solid transparent;
+  
+  &.active {
+    color: #2563eb;
+    border-bottom-color: #2563eb;
+    font-weight: 600;
+  }
+}
+
+.btn-primary-nav {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  
+  &:hover {
+    background: #1d4ed8;
+  }
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #475569;
+  padding: 0.5rem;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav-links,
+  .btn-primary-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    
+    &.active {
+      max-height: 500px;
+    }
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    padding: 1rem 2rem;
+    margin: 0;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 1rem 0;
+    color: #475569;
+    text-decoration: none;
+    font-weight: 500;
+    
+    &.active {
+    color: #2563eb;
+    font-weight: 600;
+    background: #f1f5f9;
+    padding-left: 1rem;
+    border-left: 3px solid #2563eb;
+  }
+  }
+
+  .btn-mobile-proposal {
+    width: 100%;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+}

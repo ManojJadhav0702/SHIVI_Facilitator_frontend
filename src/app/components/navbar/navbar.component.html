@@ -1,0 +1,52 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-brand" (click)="navigateTo('/')">
+      <span class="brand-name">
+        <span class="brand-highlight">SHIVI</span> Facilitator
+      </span>
+    </div>
+    
+    <ul class="nav-links">
+      <li *ngFor="let link of navLinks">
+        <a 
+          [routerLink]="link.path" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="nav-link"
+        >
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+    
+    <button class="btn-primary-nav" (click)="navigateTo('/request-proposal')">
+      Request Proposal
+    </button>
+
+    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu" [class.active]="mobileMenuOpen">
+    <ul class="mobile-nav-links">
+      <li *ngFor="let link of navLinks">
+        <a 
+          [routerLink]="link.path" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+          class="nav-link"
+        >
+          {{ link.label }}
+        </a>
+      </li>
+      <li>
+        <button class="btn-mobile-proposal" (click)="navigateTo('/request-proposal')">
+          Request Proposal
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,150 @@
+<app-navbar></app-navbar>
+
+<!-- Hero Section -->
+<section class="about-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>About Us</h1>
+    <p>A trusted multi-domain professional services organization since 2019</p>
+  </div>
+</section>
+
+<!-- Who We Are Section -->
+<section class="who-we-are">
+  <div class="container">
+    <div class="content-grid">
+      <div class="text-content">
+        <h2>Who We Are</h2>
+        <p class="intro">
+          <strong>Shivi Facilitator Service Private Limited</strong> is a multi-domain professional 
+          services organization delivering HR & workforce solutions, security & automation technology, 
+          and CSR & development project execution—supported by strong data assets, governance frameworks, 
+          and pan-India delivery capability.
+        </p>
+        <p>
+          Incorporated in <strong>June 2019</strong> and registered with the Registrar of Companies, 
+          Jharkhand (CIN: U74999JH2019PTC013080), we operate through a strategic house-of-brands model, 
+          with each vertical maintaining its specialized identity while benefiting from centralized 
+          governance and quality assurance.
+        </p>
+        <p>
+          Our headquarters in Lucknow and registered office in Jamshedpur enable us to serve clients 
+          across India with a founder-led, asset-backed, multi-domain execution approach.
+        </p>
+      </div>
+      <div class="image-content">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Team collaboration" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission, Vision, Values -->
+<section class="mvv-section">
+  <div class="container">
+    <div class="mvv-grid">
+      <!-- Mission -->
+      <div class="mvv-card mission">
+        <div class="icon-circle blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3>Our Mission</h3>
+        <ul>
+          <li *ngFor="let item of mission">{{ item }}</li>
+        </ul>
+      </div>
+
+      <!-- Vision -->
+      <div class="mvv-card vision">
+        <div class="icon-circle purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Our Vision</h3>
+        <p>{{ vision }}</p>
+      </div>
+
+      <!-- Values -->
+      <div class="mvv-card values">
+        <div class="icon-circle green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Our Values</h3>
+        <ul>
+          <li *ngFor="let value of values">
+            <strong>{{ value.title }}:</strong> {{ value.description }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Leadership Section -->
+<section class="leadership-section">
+  <div class="container">
+    <h2>Our Leadership</h2>
+    <p class="subtitle">Founder-led strategic oversight and execution excellence</p>
+    
+    <div class="leaders-grid">
+      <div class="leader-card" *ngFor="let leader of leaders">
+        <div class="leader-header" [style.background]="leader.color">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="28" r="12" stroke="white" stroke-width="3"/>
+            <path d="M20 60c0-11 9-20 20-20s20 9 20 20" stroke="white" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="leader-info">
+          <h3>{{ leader.name }}</h3>
+          <p class="leader-title">{{ leader.title }}</p>
+          <p class="credentials" *ngIf="leader.credentials">
+            <strong>Credentials:</strong> {{ leader.credentials }}
+          </p>
+          <p class="specialization">
+            <strong>Specialization:</strong> {{ leader.specialization }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Operating Model -->
+<section class="operating-model">
+  <div class="container">
+    <h2>Our Operating Model</h2>
+    <p class="subtitle">House-of-brands strategy with centralized governance and quality assurance</p>
+    
+    <div class="brands-grid">
+      <div class="brand-card" *ngFor="let brand of operatingModel" [style.background]="brand.color">
+        <h3>{{ brand.name }}</h3>
+        <p>{{ brand.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What Sets Us Apart -->
+<section class="differentiators">
+  <div class="container">
+    <h2>What Sets Us Apart</h2>
+    
+    <div class="diff-grid">
+      <div class="diff-card" *ngFor="let diff of differentiators">
+        <h3>{{ diff.title }}</h3>
+        <p>{{ diff.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

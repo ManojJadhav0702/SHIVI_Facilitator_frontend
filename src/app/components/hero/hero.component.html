@@ -1,0 +1,18 @@
+<section class="hero" [style.background-image]="'url(' + content.backgroundImage + ')'">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title" [innerHTML]="content.title"></h1>
+    <p class="hero-description">{{ content.description }}</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" (click)="onPrimaryAction()">
+        {{ content.primaryButton }}
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="btn-secondary" (click)="onSecondaryAction()">
+        {{ content.secondaryButton }}
+      </button>
+    </div>
+  </div>
+</section>

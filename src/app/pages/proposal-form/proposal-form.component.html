@@ -1,0 +1,168 @@
+<app-navbar></app-navbar>
+
+<div class="form-page">
+  <div class="form-container">
+    <h1>Request a Proposal</h1>
+    <p class="form-intro">Fill out the form below and our team will get back to you within 24 hours.</p>
+    
+    <form #proposalForm="ngForm" (ngSubmit)="onSubmit(proposalForm)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="companyName">Company Name *</label>
+          <input 
+            type="text" 
+            id="companyName"
+            name="companyName"
+            [(ngModel)]="proposal.companyName" 
+            required
+            minlength="2"
+            maxlength="100"
+            #companyName="ngModel"
+            [class.invalid]="isFieldInvalid(proposalForm, 'companyName')"
+          >
+          <div class="error-message" *ngIf="isFieldInvalid(proposalForm, 'companyName')">
+            <span *ngIf="companyName.errors?.['required']">Company name is required</span>
+            <span *ngIf="companyName.errors?.['minlength']">Company name must be at least 2 characters</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="contactName">Contact Name *</label>
+          <input 
+            type="text" 
+            id="contactName"
+            name="contactName"
+            [(ngModel)]="proposal.contactName" 
+            required
+            minlength="2"
+            maxlength="100"
+            #contactName="ngModel"
+            [class.invalid]="isFieldInvalid(proposalForm, 'contactName')"
+          >
+          <div class="error-message" *ngIf="isFieldInvalid(proposalForm, 'contactName')">
+            <span *ngIf="contactName.errors?.['required']">Contact name is required</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email"
+            name="email"
+            [(ngModel)]="proposal.email" 
+            required
+            email
+            #email="ngModel"
+            [class.invalid]="isFieldInvalid(proposalForm, 'email')"
+          >
+          <div class="error-message" *ngIf="isFieldInvalid(proposalForm, 'email')">
+            <span *ngIf="email.errors?.['required']">Email is required</span>
+            <span *ngIf="email.errors?.['email']">Invalid email format</span>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input 
+            type="tel" 
+            id="phone"
+            name="phone"
+            [(ngModel)]="proposal.phone" 
+            required
+            pattern="^[0-9+\-\s()]+$"
+            #phone="ngModel"
+            [class.invalid]="isFieldInvalid(proposalForm, 'phone')"
+          >
+          <div class="error-message" *ngIf="isFieldInvalid(proposalForm, 'phone')">
+            <span *ngIf="phone.errors?.['required']">Phone is required</span>
+            <span *ngIf="phone.errors?.['pattern']">Invalid phone format</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="serviceType">Service Type *</label>
+        <select 
+          id="serviceType"
+          name="serviceType"
+          [(ngModel)]="proposal.serviceType" 
+          required
+          #serviceType="ngModel"
+          [class.invalid]="isFieldInvalid(proposalForm, 'serviceType')"
+        >
+          <option value="">Select a service</option>
+          <option *ngFor="let service of serviceTypes" [value]="service.value">
+            {{ service.label }}
+          </option>
+        </select>
+        <div class="error-message" *ngIf="isFieldInvalid(proposalForm, 'serviceType')">
+          Service type is required
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="projectDescription">Project Description *</label>
+        <textarea 
+          id="projectDescription"
+          name="projectDescription"
+          [(ngModel)]="proposal.projectDescription" 
+          required
+          minlength="10"
+          maxlength="1000"
+          rows="5"
+          #projectDescription="ngModel"
+          [class.invalid]="isFieldInvalid(proposalForm, 'projectDescription')"
+        ></textarea>
+        <div class="error-message" *ngIf="isFieldInvalid(proposalForm, 'projectDescription')">
+          <span *ngIf="projectDescription.errors?.['required']">Project description is required</span>
+          <span *ngIf="projectDescription.errors?.['minlength']">Description must be at least 10 characters</span>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="budget">Budget (Optional)</label>
+          <input 
+            type="text" 
+            id="budget"
+            name="budget"
+            [(ngModel)]="proposal.budget"
+            placeholder="e.g., $10,000 - $50,000"
+          >
+        </div>
+        
+        <div class="form-group">
+          <label for="timeline">Timeline (Optional)</label>
+          <input 
+            type="text" 
+            id="timeline"
+            name="timeline"
+            [(ngModel)]="proposal.timeline"
+            placeholder="e.g., 3-6 months"
+          >
+        </div>
+      </div>
+      
+      <button 
+        type="submit" 
+        class="btn-submit" 
+        [disabled]="proposalForm.invalid || isSubmitting"
+      >
+        {{ isSubmitting ? 'Submitting...' : 'Submit Proposal' }}
+      </button>
+      
+<div class="message success" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+
+      <div class="message error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-footer></app-footer>

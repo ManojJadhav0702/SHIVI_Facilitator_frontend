@@ -1,0 +1,244 @@
+<app-navbar></app-navbar>
+
+<!-- Hero Section -->
+<section class="contact-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Get In Touch</h1>
+    <p>Let us know how we can help transform your organization</p>
+  </div>
+</section>
+
+<!-- Main Contact Section -->
+<section class="contact-main">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Left Column - Contact Information -->
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p class="info-subtitle">
+          We're here to assist your organization and ensure the right admin 
+          connects with you based on your query
+        </p>
+
+        <!-- General Inquiries -->
+        <div class="contact-item">
+          <div class="icon-wrapper email-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M3 4h14c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/>
+              <path d="M19 6l-9 6-9-6" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <h4>General Inquiries</h4>
+            <a href="mailto:info@shivifacilitator.com">info&#64;shivifacilitator.com</a>
+          </div>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="contact-item">
+          <div class="icon-wrapper phone-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M18.3 14.5c-.4-.5-2.1-1.7-3-2-1-.3-1.4-.1-2 .5-.5.5-.8.8-1.3.6-1-.3-3.3-2.6-3.6-3.6-.2-.5.1-.8.6-1.3.6-.6.8-1 .5-2-.3-.9-1.5-2.6-2-3-.5-.4-1-.5-1.5-.2-.6.3-2.2 1.3-2.2 3.8 0 1.5 1.2 3.1 1.4 3.4 1.5 2.1 4.3 5.8 8 7 3.7 1.2 5.5.6 6-.4.5-1 .5-2.5.2-3-.3-.5-.6-.6-1.1-1z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <h4>Phone Numbers</h4>
+            <a href="tel:+919876543210">+91 9876543210</a>
+            <a href="tel:+919876543211">+91 9876543211</a>
+          </div>
+        </div>
+
+        <!-- Registered Office -->
+        <div class="contact-item">
+          <div class="icon-wrapper location-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2c-3.3 0-6 2.7-6 6 0 4.5 6 10 6 10s6-5.5 6-10c0-3.3-2.7-6-6-6z" stroke="currentColor" stroke-width="2"/>
+              <circle cx="10" cy="8" r="2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <h4>Registered Office</h4>
+            <p>3/21/2A Sakchi-H Layout,<br>
+            Beside DAV School, Kadma,<br>
+            Jamshedpur, Jharkhand<br>
+            India (Pincode - 831005)</p>
+          </div>
+        </div>
+
+        <!-- Department-Specific Contacts -->
+        <div class="department-contacts">
+          <h3>Department-Specific Contacts</h3>
+          
+          <div class="dept-item">
+            <strong>• Human Resources (HR) & Workforce:</strong><br>
+            <a href="mailto:hr@shivifacilitator.com">hr&#64;shivifacilitator.com</a>
+          </div>
+          
+          <div class="dept-item">
+            <strong>• ANNA (Security & Automation):</strong><br>
+            <a href="mailto:security@shivifacilitator.com">security&#64;1anna.in / security&#64;anna.co.in</a>
+          </div>
+          
+          <div class="dept-item">
+            <strong>• VKM Projects (CSR & Development):</strong><br>
+            <a href="mailto:contact@vkmprojects.in">contact&#64;vkmprojects.in</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Contact Form -->
+      <div class="contact-form-wrapper">
+        <div class="form-card">
+          <h2>Send Us a Message</h2>
+          
+          <form #contactFormRef="ngForm" (ngSubmit)="onSubmit(contactFormRef)">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input 
+                type="text" 
+                id="name"
+                name="name"
+                [(ngModel)]="contactForm.name"
+                required
+                placeholder="Your full name"
+                [class.invalid]="isFieldInvalid(contactFormRef, 'name')"
+              >
+              <div class="error-message" *ngIf="isFieldInvalid(contactFormRef, 'name')">
+                Name is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input 
+                type="email" 
+                id="email"
+                name="email"
+                [(ngModel)]="contactForm.email"
+                required
+                email
+                placeholder="your.email@company.com"
+                [class.invalid]="isFieldInvalid(contactFormRef, 'email')"
+              >
+              <div class="error-message" *ngIf="isFieldInvalid(contactFormRef, 'email')">
+                Valid email is required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input 
+                type="tel" 
+                id="phone"
+                name="phone"
+                [(ngModel)]="contactForm.phone"
+                placeholder="+91 1234567890"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input 
+                type="text" 
+                id="company"
+                name="company"
+                [(ngModel)]="contactForm.company"
+                placeholder="Your company name"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="reason">Reason (Select a service) *</label>
+              <select 
+                id="reason"
+                name="reason"
+                [(ngModel)]="contactForm.reason"
+                required
+                [class.invalid]="isFieldInvalid(contactFormRef, 'reason')"
+              >
+                <option *ngFor="let reason of reasons" [value]="reason.value">
+                  {{ reason.label }}
+                </option>
+              </select>
+              <div class="error-message" *ngIf="isFieldInvalid(contactFormRef, 'reason')">
+                Please select a service
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea 
+                id="message"
+                name="message"
+                [(ngModel)]="contactForm.message"
+                required
+                minlength="10"
+                rows="5"
+                placeholder="Tell us how we can help..."
+                [class.invalid]="isFieldInvalid(contactFormRef, 'message')"
+              ></textarea>
+              <div class="error-message" *ngIf="isFieldInvalid(contactFormRef, 'message')">
+                Message is required (minimum 10 characters)
+              </div>
+            </div>
+
+            <button 
+              type="submit" 
+              class="submit-btn"
+              [disabled]="contactFormRef.invalid || isSubmitting"
+            >
+              <span *ngIf="!isSubmitting">Send Message</span>
+              <span *ngIf="isSubmitting">
+                <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+                  <circle class="path" cx="12" cy="12" r="10" fill="none" stroke-width="3"></circle>
+                </svg>
+                Sending...
+              </span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" *ngIf="!isSubmitting">
+                <path d="M18 2L9 11M18 2l-7 16-2-7-7-2 16-7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <div class="message success" *ngIf="successMessage">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167L3.333 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              {{ successMessage }}
+            </div>
+
+            <div class="message error" *ngIf="errorMessage">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 18c4.4 0 8-3.6 8-8s-3.6-8-8-8-8 3.6-8 8 3.6 8 8 8zM10 6v4M10 13.3h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              {{ errorMessage }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Additional Resources -->
+<section class="additional-resources">
+  <div class="container">
+    <h2>Additional Resources</h2>
+    <div class="resources-grid">
+      <a href="https://shivifacilitator.com" target="_blank" class="resource-card">
+        <h3>Official Website</h3>
+        <p>www.shivifacilitator.com</p>
+      </a>
+      <a href="https://1anna.in" target="_blank" class="resource-card">
+        <h3>1 ANNA Website</h3>
+        <p>www.1anna.in</p>
+      </a>
+      <a href="#" class="resource-card">
+        <h3>Leadership Portfolio</h3>
+        <p>www.vivekmishra.com</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

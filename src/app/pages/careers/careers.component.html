@@ -1,0 +1,91 @@
+<app-navbar></app-navbar>
+
+<!-- Hero Section -->
+<section class="careers-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Join Our Team</h1>
+    <p>Build your career with a multi-domain professional services leader</p>
+  </div>
+</section>
+
+<!-- Search Section -->
+<section class="search-section">
+  <div class="container">
+    <div class="search-bar">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="2"/>
+          <path d="M14 14l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input 
+          type="text" 
+          [(ngModel)]="searchQuery"
+          placeholder="Search jobs by title or keywords..."
+          class="search-input"
+        >
+      </div>
+      
+      <select 
+        [(ngModel)]="selectedDepartment"
+        class="department-select"
+      >
+        <option *ngFor="let dept of departments" [value]="dept.value">
+          {{ dept.label }}
+        </option>
+      </select>
+      
+      <button class="track-btn" (click)="onTrackApplication()">
+        Track Application
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Jobs Listing Section -->
+<section class="jobs-section">
+  <div class="container">
+    <!-- No Jobs Found -->
+    <div class="no-jobs" *ngIf="filteredJobs.length === 0">
+      <svg class="briefcase-icon" width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <rect x="10" y="25" width="60" height="40" rx="4" stroke="currentColor" stroke-width="3"/>
+        <path d="M30 25V20C30 16.6863 32.6863 14 36 14H44C47.3137 14 50 16.6863 50 20V25" stroke="currentColor" stroke-width="3"/>
+        <line x1="10" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="3"/>
+      </svg>
+      <h2>No positions found</h2>
+      <p>Try adjusting your search or filters</p>
+    </div>
+
+    <!-- Jobs List -->
+    <div class="jobs-grid" *ngIf="filteredJobs.length > 0">
+      <div class="job-card" *ngFor="let job of filteredJobs">
+        <div class="job-header">
+          <h3>{{ job.title }}</h3>
+          <span class="job-type">{{ job.type }}</span>
+        </div>
+        <div class="job-meta">
+          <span class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            {{ job.department }}
+          </span>
+          <span class="meta-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 14c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 4v4l2 2" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            {{ job.location }}
+          </span>
+        </div>
+        <p class="job-description">{{ job.description }}</p>
+        <div class="job-footer">
+          <span class="posted-date">Posted {{ job.postedDate | date:'MMM d, y' }}</span>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
